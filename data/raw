@@ -1,0 +1,14 @@
+# Import necessary libraries
+import pandas as pd
+import numpy as np
+
+# Fetching cryptocurrency market prices and data
+from src.dataloader import get_bitcoin_data
+BTC_USD = get_bitcoin_data()
+
+# Saving raw data to CSV
+BTC_USD.to_csv("data/raw/BTC_USD_raw.csv", index=True)
+
+# Displaying the first few rows of the raw data
+print("RAW Bitcoin data:")
+print(BTC_USD.head())

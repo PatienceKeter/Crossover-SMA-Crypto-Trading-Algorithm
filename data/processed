@@ -1,0 +1,23 @@
+# Import necessary libraries
+import pandas as pd
+import numpy as np
+
+# Fetching cryptocurrency market prices and data
+from src.dataloader import get_bitcoin_data
+BTC_USD = get_bitcoin_data()
+
+# Fetching trading signals
+from src.analysis import add_sma, generate_trade_signals
+BTC_USD = add_sma(BTC_USD)
+signals = generate_trade_signals(BTC_USD)
+
+# Combining BTC data with signals
+processed_data = pd.concat([BTC_USD, signals], axis=1)
+processed_data.to_csv("data/processed/BTC_USD_sma_signals.csv", index=True)
+
+# Saving processed data with SMAs and signals to CSV
+BTC_USD.to_csv("data/processed/BTC_USD_sma_signals.csv", index=True)
+
+# Displaying the first few rows of the processed data
+print("Processed data with SMAs and signals:")
+print(processed_data.head())
