@@ -1,4 +1,9 @@
-from src.data_loader import get_bitcoin_data
+#Import libraries
+import os
+import sys
+
+# Fetching Bitcoin data
+from src.dataloader import get_bitcoin_data
 from src.analysis import add_sma, generate_trade_signals
 from src.visualization import plot_price, plot_moving_averages, plot_trade_signals, plot_backtest
 from src.backtest import backtest

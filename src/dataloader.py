@@ -1,6 +1,4 @@
-# Fetch cryptocurrency market prices and data
 # Import necessary libraries
-
 import yfinance as yf
 import pandas as pd
 

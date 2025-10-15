@@ -1,5 +1,12 @@
+# Import necessary libraries
 import pandas as pd
 import numpy as np
+
+#Fetching Bitcoin data
+from src.dataloader import get_bitcoin_data
+BTC_USD = get_bitcoin_data()
+#Fetching trade signals
+from src.analysis import trade_signals
 
 # Backesting the algorithm's trading performance
 

@@ -1,6 +1,11 @@
 import pandas as pd
 import numpy as np
 
+#Fetching Bitcoin data
+from src.dataloader import get_bitcoin_data
+BTC_USD = get_bitcoin_data()
+
+
 # Computing moving averages and generate trade signals
 
 # Computing a 9-day Simple Moving Average with pandas

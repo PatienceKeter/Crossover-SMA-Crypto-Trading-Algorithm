@@ -1,6 +1,15 @@
 from matplotlib import pyplot as plt
 from matplotlib.dates import DateFormatter
 
+#Fetching Bitcoin data
+from src.dataloader import get_bitcoin_data
+BTC_USD = get_bitcoin_data()
+#Fetching trade signals
+from src.analysis import trade_signals
+#Fetching backtest results
+from src.backtest import backtest
+initial_balance = 10000.0
+
 # Generating a Bitcoin price chart (1 day interval)
 fig, ax = plt.subplots(dpi=500)
 
@@ -95,7 +104,7 @@ ax.tick_params(axis='x', labelsize=8)
 fig.autofmt_xdate()
 
 # Plotting the value of Buy and Hold Strategy
-ax.plot(initial_balance*backtest.BTC_Return.cumprod(), lw=0.75, alpha=0.75, label='Buy and Hold')
+ax.plot(initial_balance * (1 + backtest['BTC_Return']).cumprod(), lw=0.75, alpha=0.75, label='Buy and Hold')
 
 # Plotting total value of Crossing Averages Strategy
 ax.plot(backtest['Balance'], lw=0.75, alpha=0.75, label='Crossing Averages')
